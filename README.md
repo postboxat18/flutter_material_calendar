@@ -1,4 +1,3 @@
 This README provides documentation and usage instructions for the Material Calendar library, which enables developers to display calendar events with colors and times. The library offers a simple and intuitive way to create and manage events within a calendar UI. This README covers installation instructions, usage examples, API documentation, contributing guidelines, and licensing information. By following the steps outlined here, users will be able to effortlessly integrate the library into their projects, allowing them to showcase events with customizable colors and precise time information. Whether you're building a scheduling app, a project management tool, or any other application that requires event visualization, the Material Calendar library is designed to simplify the process.
 
-
-[flutter_materila_calendar.webm](https://github.com/postboxat18/flutter_material_calendar/assets/77087523/45aa1080-da7d-42a8-b6c0-e4f00d060aa2)
+![flutter_materila_calendar-ezgif com-video-to-gif-converter](https://github.com/postboxat18/flutter_material_calendar/assets/77087523/6469eaad-862c-4805-af0d-0f038f19cd37)
