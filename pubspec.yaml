@@ -1,7 +1,7 @@
 name: flutter_material_calendar
 description: "Material Calendar"
 version: 0.0.1
-homepage:
+homepage: https://github.com/postboxat18/flutter_material_calendar.git
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
