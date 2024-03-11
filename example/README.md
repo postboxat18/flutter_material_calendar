@@ -1,16 +1,1 @@
-# example
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This README provides documentation and usage instructions for the Material Calendar Event library, which enables developers to display calendar events with colors and times. The library offers a simple and intuitive way to create and manage events within a calendar UI. This README covers installation instructions, usage examples, API documentation, contributing guidelines, and licensing information. By following the steps outlined here, users will be able to effortlessly integrate the library into their projects, allowing them to showcase events with customizable colors and precise time information. Whether you're building a scheduling app, a project management tool, or any other application that requires event visualization, the Material Calendar library is designed to simplify the process.
