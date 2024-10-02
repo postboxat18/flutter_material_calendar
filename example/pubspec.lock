@@ -75,7 +75,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: f6be541df12665654239f7ddd86fdbdb12d99c0e
+      resolved-ref: "98900e70dbab48eb7aef682f820743028ec778d0"
       url: "https://github.com/postboxat18/flutter_material_calendar.git"
     source: git
     version: "0.0.2"
