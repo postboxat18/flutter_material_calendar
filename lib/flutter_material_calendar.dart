@@ -114,7 +114,6 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
   }
 
   getEndDate(int monthEnd, int yearEnd) {
-
     var date = DateTime(yearEnd, monthEnd + 1, 0);
     String formattedTime = DateFormat("MMM").format(date);
     String findYear = DateFormat('yyyy').format(date);
@@ -217,18 +216,16 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                               String month = "";
                               DateTime list = DateFormat("MMMM-yyyy")
                                   .parse(widget.monthYear);
-                              var monthFormat = DateFormat('yyyy-MM-dd')
-                                  .parse(
+                              var monthFormat = DateFormat('yyyy-MM-dd').parse(
                                   "${list.year}-${list.month}-${str[j]}");
-                              weekDay =
-                                  DateFormat('EEEE').format(monthFormat);
+                              weekDay = DateFormat('EEEE').format(monthFormat);
                               month = DateFormat('MMMM').format(monthFormat);
                               bool isCurrentData = false;
                               DateTime now = DateTime.now();
-                              int n = DateTime(list.year, list.month,
-                                  int.parse(str[j]))
+                              int n = DateTime(
+                                      list.year, list.month, int.parse(str[j]))
                                   .difference(
-                                  DateTime(now.year, now.month, now.day))
+                                      DateTime(now.year, now.month, now.day))
                                   .inDays;
                               isCurrentData = n == 0;
 
@@ -242,9 +239,9 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                                     padding: const EdgeInsets.all(15),
                                     child: Column(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         //DATE DAY
                                         Row(
@@ -259,14 +256,14 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                                                   fontSize: 10),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  5, 0, 0, 0),
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      5, 0, 0, 0),
                                               child: Text(
                                                 weekDay,
                                                 style: const TextStyle(
                                                     color: Colors.black,
-                                                    fontWeight:
-                                                    FontWeight.w400,
+                                                    fontWeight: FontWeight.w400,
                                                     fontSize: 10),
                                               ),
                                             ),
@@ -292,14 +289,14 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                                                   fontSize: 10),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  5, 0, 0, 0),
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      5, 0, 0, 0),
                                               child: Text(
                                                 month,
                                                 style: const TextStyle(
                                                     color: Colors.black,
-                                                    fontWeight:
-                                                    FontWeight.w400,
+                                                    fontWeight: FontWeight.w400,
                                                     fontSize: 10),
                                               ),
                                             )
@@ -342,38 +339,38 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
       date = DateFormat('dd').format(dates);
     }
     return currentYear == findYear &&
-        currentMonth == findMonth &&
-        date == findDate
+            currentMonth == findMonth &&
+            date == findDate
         ? Card(
-      margin: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-          side: BorderSide(color: widget.primaryColor)),
-      elevation: 0,
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Text(
-          date,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: widget.primaryColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 14),
-        ),
-      ),
-    )
+            margin: const EdgeInsets.fromLTRB(5, 15, 5, 0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(color: widget.primaryColor)),
+            elevation: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                date,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: widget.primaryColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14),
+              ),
+            ),
+          )
         : Container(
-        margin: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-        padding: const EdgeInsets.all(5),
-        child: Text(
-          date,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color:
-              day.isEmpty ? Colors.black : textDayColor(int.parse(day)),
-              fontWeight: FontWeight.w700,
-              fontSize: 14),
-        ));
+            margin: const EdgeInsets.fromLTRB(5, 15, 5, 0),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              date,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color:
+                      day.isEmpty ? Colors.black : textDayColor(int.parse(day)),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14),
+            ));
   }
 
   textDayColor(int j) {
@@ -389,12 +386,12 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
       day = DateFormat('dd').format(dates);
     }
     bool isTrue = true;
-    var dateFormat;
+    String dateFormat = "";
     if (day.isEmpty) {
     } else {
       DateTime list = DateFormat("MMMM-yyyy").parse(widget.monthYear);
       var monthFormat =
-      DateFormat('yyyy-MM-dd').parse("${list.year}-${list.month}-$day");
+          DateFormat('yyyy-MM-dd').parse("${list.year}-${list.month}-$day");
       dateFormat = DateFormat('yyyy-MM-dd').format(monthFormat);
     }
 
@@ -406,8 +403,9 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
         child: Wrap(
           children: [
             for (int l = 0; l < widget.eventList!.length; l++) ...[
-              if (dateFormat.toString() ==
-                  widget.eventList?[l].date.toString()) ...[
+              if (dateFormat.isNotEmpty &&
+                  dateFormat.toString() ==
+                      widget.eventList?[l].date.toString()) ...[
                 eventFunc(widget.eventList![l], val),
               ] else ...[
                 const Text("")

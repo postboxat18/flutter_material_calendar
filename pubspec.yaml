@@ -1,6 +1,6 @@
 name: flutter_material_calendar
-description: "Material Calendar"
-version: 0.0.3
+description: "This package is perfect for those who want to keep track of their tasks and deadlines in an organized, functional calendar view."
+version: 0.0.4
 homepage: https://github.com/postboxat18/flutter_material_calendar.git
 
 environment:
