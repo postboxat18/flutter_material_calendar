@@ -1,6 +1,4 @@
-Here’s a **README** for the **Flutter Material Calendar** package for your GitHub repository:
 
----
 
 # Flutter Material Calendar
 
