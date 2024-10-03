@@ -40,59 +40,6 @@ Then run `flutter pub get` to install it.
 
 ---
 
-## Usage
-
-Import the package:
-
-```dart
-import 'package:flutter_material_calendar/flutter_material_calendar.dart';
-```
-
-Add the **Flutter Material Calendar** to your app:
-
-```dart
-MaterialCalendar(
-  onDaySelected: (DateTime date) {
-    print('Selected date: $date');
-  },
-  onTodoAdded: (String task) {
-    print('Added task: $task');
-  },
-);
-```
-
----
-
-## Example
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_material_calendar/flutter_material_calendar.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Material Calendar')),
-        body: MaterialCalendar(
-          onDaySelected: (DateTime date) {
-            print('Selected date: $date');
-          },
-          onTodoAdded: (String task) {
-            print('Added task: $task');
-          },
-        ),
-      ),
-    );
-  }
-}
-```
-
----
-
 ## License
 
 This package is open-source and available under the [MIT License](LICENSE).
