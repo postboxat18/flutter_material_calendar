@@ -17,13 +17,9 @@ Here’s the **README** for the **Flutter Material Calendar** package with the a
 
 ---
 
-![Flutter Material Calendar](https://github.com/postboxat18/flutter_material_calendar/assets/77087523/6469eaad-862c-4805-af0d-0f038f19cd37)
-
----
-
 ## Video Demo
+![FlutterDemo-GoogleChrome2025-03-0120-55-20-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4cc6d988-b12b-4a5f-bb86-1bc9c3778f33)
 
-Check out this **[video demonstration](https://github.com/postboxat18/flutter_material_calendar/assets/77087523/6469eaad-862c-4805-af0d-0f038f19cd37)** to see the **Flutter Material Calendar** in action.
 
 ---
 
@@ -35,7 +31,7 @@ Add the package to your `pubspec.yaml` file:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_material_calendar: ^1.0.0
+  flutter_material_calendar: ^0.0.7
 ```
 
 Then run `flutter pub get` to install it.
