@@ -1,7 +1,6 @@
-library flutter_material_calendar;
-
 import 'package:flutter/material.dart';
 import "package:intl/intl.dart";
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class MaterialCalendarEvent extends StatefulWidget {
   final List<EventList>? eventList;
@@ -43,7 +42,26 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
     "Sat"
   ];
   late List<String> weekList = ["S", "M", "T", "W", "T", "F", "S"];
+  late List<String> totalMonList = [];
+  late List<String> monthList = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
   late DateTime currentDate;
+  late bool isYear = false;
+  late ItemScrollController scrollController = ItemScrollController();
+  late bool sValue = false;
+  late int initialIndex = 0;
 
   @override
   void initState() {
@@ -57,6 +75,15 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
     });
     getEndDate(month, year);
 
+    for (int i = 0; i < 100; i++) {
+      int addYear = (year - 50) + i;
+      totalMonList.add(addYear.toString());
+      totalMonList.addAll(monthList);
+    }
+    initialIndex = totalMonList.indexWhere(
+      (element) => element == currentYear,
+    );
+
     super.initState();
   }
 
@@ -68,47 +95,77 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
     height = MediaQuery.of(context).size.height;
     paddingWidth = isTab ? (width * 0.02) : (width * 0.03);
     paddingHeight = (height * 0.15);
-    return Container(
-      margin: EdgeInsets.fromLTRB(paddingWidth, 15, paddingWidth, 15),
-      decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-              side: BorderSide(color: widget.selectedClr),
-              borderRadius: BorderRadius.circular(12))),
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: width,
-              child: Table(
-                children: [
-                  TableRow(children: [
-                    for (int i = 0; i < weekList.length; i++) ...[
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                          child: Text(
-                            weekList[i].toString(),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(color: Colors.black),
-                          ))
-                    ]
-                  ]),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          //MONTH
+          SizedBox(
+            height: 50,
+            child: ScrollablePositionedList.builder(
+              itemScrollController: scrollController,
+              initialScrollIndex: initialIndex,
+              scrollDirection: Axis.horizontal,
+              itemCount: totalMonList.length,
+              itemBuilder: (context, index) =>
+                  widTotalFunc(totalMonList[index].toString(), index),
+            ),
+          ),
+          /* SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (int index = 0; index < totalMonList.length; index++) ...[
+                  widTotalFunc(totalMonList[index].toString(), index),
+                ]
+              ],
+            ),
+          ),*/
+          //CAL
+          Container(
+            margin: EdgeInsets.fromLTRB(paddingWidth, 0, paddingWidth, 15),
+            decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: widget.selectedClr),
+                    borderRadius: BorderRadius.circular(12))),
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: width,
+                    child: Table(
+                      children: [
+                        TableRow(children: [
+                          for (int i = 0; i < weekList.length; i++) ...[
+                            Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                child: Text(
+                                  weekList[i].toString(),
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(color: Colors.black),
+                                ))
+                          ]
+                        ]),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: width,
+                    child: Column(children: [
+                      for (int i = 1; i <= (endDate / 6) + 1; i++) ...[
+                        tableRowList(i)
+                      ]
+                    ]),
+                  )
                 ],
               ),
             ),
-            SizedBox(
-              width: width,
-              child: Column(children: [
-                for (int i = 1; i <= (endDate / 6) + 1; i++) ...[
-                  tableRowList(i)
-                ]
-              ]),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -261,9 +318,11 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                                                       5, 0, 0, 0),
                                               child: Text(
                                                 weekDay,
-                                                style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w400,
+                                                style: TextStyle(
+                                                    color: isCurrentData
+                                                        ? widget.primaryColor
+                                                        : Colors.black,
+                                                    fontWeight: FontWeight.w700,
                                                     fontSize: 10),
                                               ),
                                             ),
@@ -294,8 +353,10 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
                                                       5, 0, 0, 0),
                                               child: Text(
                                                 month,
-                                                style: const TextStyle(
-                                                    color: Colors.black,
+                                                style: TextStyle(
+                                                    color: isCurrentData
+                                                        ? widget.primaryColor
+                                                        : Colors.black,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 10),
                                               ),
@@ -448,6 +509,66 @@ class MaterialCalendarEvent1 extends State<MaterialCalendarEvent> {
             )
           ]
         ],
+      ),
+    );
+  }
+
+  widTotalFunc(String totalMonth, int index) {
+    try {
+      double.parse(totalMonth);
+      sValue = true;
+      if (totalMonth == currentYear) {
+        isYear = true;
+      } else {
+        isYear = false;
+      }
+    } catch (e) {
+      sValue = false;
+    }
+    return InkWell(
+      onTap: sValue
+          ? null
+          : () {
+              int id = monthList.indexWhere(
+                (element) => element == totalMonList[index],
+              );
+
+              setState(() {
+                currentMonth = totalMonth;
+                currentYear = totalMonList[index - (id + 1)];
+              });
+              getEndDate(id + 1, int.parse(totalMonList[index - (id + 1)]));
+            },
+      child: Container(
+        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        decoration: ShapeDecoration(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                side: BorderSide(
+                    color: isYear
+                        ? totalMonth.toString() == currentMonth
+                            ? widget.primaryColor
+                            : sValue
+                                ? Colors.transparent
+                                : widget.selectedClr
+                        : sValue
+                            ? Colors.transparent
+                            : widget.selectedClr),
+                borderRadius: BorderRadius.circular(5))),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            totalMonth.toString(),
+            style: TextStyle(
+              color: isYear
+                  ? totalMonth.toString() == currentMonth
+                      ? widget.primaryColor
+                      : Colors.black
+                  : Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }
