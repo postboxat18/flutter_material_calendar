@@ -75,10 +75,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: b448a3b56e0f0ded1ae3224c00df1abd75d31bb1
+      resolved-ref: a47fa1627342ff1b20cdd2338529999ac6a01544
       url: "https://github.com/postboxat18/flutter_material_calendar.git"
     source: git
-    version: "0.0.6"
+    version: "0.0.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -88,10 +88,10 @@ packages:
     dependency: "direct main"
     description:
       name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      sha256: "3df61194eb431efc39c4ceba583b95633a403f46c9fd341e550ce0bfa50e9aa5"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.0"
+    version: "0.20.2"
   leak_tracker:
     dependency: transitive
     description:
@@ -156,6 +156,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  scrollable_positioned_list:
+    dependency: transitive
+    description:
+      name: scrollable_positioned_list
+      sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.8"
   sky_engine:
     dependency: transitive
     description: flutter
